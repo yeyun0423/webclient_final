@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/signup.css" />
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <h1>Sign up</h1>
+      ID:<br /><input
+        type="email"
+        placeholder="이메일을 작성해주세요."
+        id="signUpEmail"
+        name="email"
+        required
+      /><br />
+      Password:<input
+        type="password"
+        placeholder="4자리의 숫자를 입력해주세요."
+        id="signUpPassword"
+        name="password"
+        required
+        pattern="\d{4}"
+        title="4자리 숫자를 입력해주세요."
+      /><br />
+      Name:<input
+        type="text"
+        placeholder="이름을 작성해주세요."
+        id="name"
+        name="name"
+        required
+      /><br />
+      <button type="submit" id="loginButton">Submit</button>
+      <p>Welcome to the chat.</p>
+    </form>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID",
+        measurementId: "YOUR_MEASUREMENT_ID",
+      };
+
+      // Firebase 초기화
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+      document
+        .getElementById("signupButton")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          const email = document.getElementById("signUpEmail").value;
+          const password = document.getElementById("signUpPassword").value;
+          const auth = getAuth();
+          createUserWithEmailAndPassword(auth, email, password)
+            // 회원가입 성공 시
+            .then((userCredential) => {
+              console.log(userCredential);
+
+              const user = userCredential.user;
+              // ...
+            })
+
+            // 회원가입 실패 시
+            .catch((error) => {
+              console.error(error); // 에러 출력
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // ..
+            });
+        });
+
+      console.log("hello world");
+      console.log(app);
+    </script>
+  </body>
+</html>

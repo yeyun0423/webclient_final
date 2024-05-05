@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/login.css" />
+  </head>
+  <body>
+    <form action="/info" method="POST">
+      <h1>Log in</h1>
+      ID:<br /><input
+        type="email"
+        placeholder="이메일을 작성해주세요."
+        id="signUpEmail"
+        required
+      /><br />
+      Password:<input
+        type="password"
+        pattern="\d{4}"
+        title="4자리 수의 숫자를 입력해주세요."
+        required
+        placeholder="4자리의 숫자를 입력해주세요."
+        id="signUpPassword"
+      /><br />
+      <button type="submit" id="loginButton" class="button-link">Log in</button>
+      <p>Don't have an account?<a href="/signup">&nbsp;Sign up</a></p>
+    </form>
+  </body>
+</html>

@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="/stylesheets/signup.css" />
   </head>
   <body>
-    <form action="/" method="POST">
+    <form action="/signup" method="post">
       <h1>Sign up</h1>
       ID:<br /><input
         type="email"
         placeholder="이메일을 작성해주세요."
-        id="signUpEmail"
         name="email"
+        id="email"
         required
       /><br />
       Password:<input
         type="password"
         placeholder="4자리의 숫자를 입력해주세요."
-        id="signUpPassword"
+        id="password"
         name="password"
         required
         pattern="\d{4}"

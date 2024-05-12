@@ -1,13 +1,12 @@
+//경로 /app/routes/routes
 const express = require("express");
 const router = express.Router();
 
 // 컨트롤러 가져오기
-const controller = require("./controllers");
+const controller = require("./controller");
 
 // 라우터 설정
-router.get("/", controller.login);
-router.get("/chat", controller.chat);
+router.get("/login", controller.login);
 router.get("/signup", controller.signup);
-router.get("/info", controller.chatInfo);
-
+router.get("/chat", controller.chat);
 module.exports = router;

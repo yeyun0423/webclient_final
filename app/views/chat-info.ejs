@@ -1,3 +1,4 @@
+<!-- 경로 app/views/chat-info.ejs -->
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -8,29 +9,63 @@
   </head>
   <body>
     <div class="friends-container">
-      <div class="friends-header">친구 목록</div>
+      <div class="friends-header">
+        <%= name %>님
+        <div class="header-content"></div>
+      </div>
+      <div class="friends-header-bottom">
+        <span class="friend-count">친구 명</span>
+        <img
+          src="/images/add-friend-icon.png"
+          alt="친구 추가"
+          class="add-friend-icon"
+          id="add-friend-button"
+        />
+      </div>
       <ul class="friends-list" id="friends-list">
         <!-- 친구 목록 아이템 -->
         <li class="friend-item">
           <div class="friend-info">
             <img
-              src="friend-photo-url.jpg"
+              src="/images/friend-photo.png"
               alt="친구 사진"
               class="friend-photo"
             />
-            <div>
+            <div class="friend-name-status">
               <div class="friend-name">친구 이름</div>
               <div class="friend-status">상태 메시지</div>
             </div>
+            <img
+              src="/images/remove-friend-icon.png"
+              alt="친구 삭제"
+              class="remove-friend-icon"
+            />
           </div>
         </li>
         <!-- 추가 친구 목록 아이템 -->
       </ul>
 
       <div class="bottom-bar">
-        <img src="person-icon.png" alt="사람" class="icon" />
-        <img src="chat-icon.png" alt="채팅" class="icon" />
+        <img src="/images/person-icon.png" alt="사람" class="icon" />
+        <img src="/images/chat-icon.png" alt="채팅" class="icon" />
       </div>
     </div>
+
+    <!-- 모달 창 -->
+    <form action="/add" method="POST">
+      <div id="addFriendModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h4>친구 추가</h4>
+          <p>친구의 이메일을 입력하세요</p>
+          <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
+          <input type="hidden" name="userEmail" value="<%= userEmail %>" />
+          <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
+          <input type="email" name="friendEmail" required />
+          <button type="submit">Add</button>
+        </div>
+      </div>
+    </form>
+    <script src="/javascripts/modal.js"></script>
   </body>
 </html>

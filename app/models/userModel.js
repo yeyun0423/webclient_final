@@ -1,18 +1,25 @@
+//경로 app/models/userModel.js
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   email: {
     type: String,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   name: {
     type: String,
-    require: true,
+    required: true,
   },
+  friends: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema); // userSchema를 model로 감싸준다.

@@ -42,34 +42,27 @@ const createUser = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    // 요청에서 이메일과 비밀번호 추출
     const { email, password } = req.body;
 
-    // 이메일로 사용자를 찾음
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("friends"); // 친구 목록을 포함하여 사용자 정보를 조회
     if (!user) {
-      // 사용자가 존재하지 않는 경우
       return res.status(400).json({ msg: "존재하지 않는 사용자입니다." });
     }
 
-    // 비밀번호 일치 여부 확인
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      // 비밀번호가 일치하지 않는 경우
       return res.status(400).json({ msg: "잘못된 비밀번호입니다." });
     }
 
-    // JWT 토큰 생성
     const token = jwt.sign({ email: user.email }, jwtSecret);
-
-    // 쿠키에 토큰 설정
     res.cookie("token", token, { httpOnly: true });
 
-    // 로그인 성공 응답
-    console.log(user);
-    res.render("chat-info", { name: user.name, userEmail: user.email });
+    res.render("chat-info", {
+      name: user.name,
+      userEmail: user.email,
+      friends: user.friends,
+    }); // 친구 목록을 뷰로 전달
   } catch (err) {
-    // 오류 처리
     console.error(err.message);
     res.status(500).json({ msg: "서버 오류" });
   }

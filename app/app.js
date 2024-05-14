@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 let path = require("path");
-const cors = require("cors");
 
 const router = require("./routes/routes");
 const loginRouter = require("./routes/login");
@@ -25,9 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // 정적 파일 제공 설정
 app.use(express.static(path.join(__dirname, "public")));
-
-//cors 초기화
-app.use(cors());
 
 // 라우트 설정
 app.use(router);

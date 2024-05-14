@@ -21,17 +21,3 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
-//친구 제거되었음을 알리는 알림창
-document.addEventListener("DOMContentLoaded", function () {
-  const removeIcons = document.querySelectorAll(".remove-friend-icon");
-  removeIcons.forEach((icon) => {
-    icon.addEventListener("click", function () {
-      const isConfirmed = confirm("친구를 삭제하시겠습니까?");
-      if (isConfirmed) {
-        // 여기에 친구를 삭제하는 로직을 추가하세요.
-        alert("친구가 삭제되었습니다");
-      }
-    });
-  });
-});

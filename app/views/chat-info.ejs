@@ -15,7 +15,7 @@
         <div class="header-content"></div>
       </div>
       <div class="friends-header-bottom">
-        <span class="friend-count">친구 명</span>
+        <span class="friend-count">친구 <%= friendCount %> 명</span>
         <img
           src="/images/add-friend-icon.png"
           alt="친구 추가"
@@ -23,9 +23,8 @@
           id="add-friend-button"
         />
       </div>
-      <!-- 이부분이랑  -->
       <ul class="friends-list" id="friends-list">
-        <% friends.forEach(function(friend) { %>
+        <% user.friends.forEach(friend => { %>
         <li class="friend-item">
           <div class="friend-info">
             <img
@@ -35,20 +34,19 @@
             />
             <div class="friend-name-status">
               <div class="friend-name"><%= friend.name %></div>
-
               <div class="friend-status">상태메세지</div>
             </div>
             <img
               src="/images/remove-friend-icon.png"
               alt="친구 삭제"
               class="remove-friend-icon"
-              data-id="<%= friend._id %>"
+              data-email="<%= friend.email %>"
             />
           </div>
+          <input type="hidden" name="userEmail" value="<%= userEmail %>" />
         </li>
-        <% }); %>
+        <% }) %>
       </ul>
-      <!-- 이부분까지  -->
       <div class="bottom-bar">
         <img src="/images/person-icon.png" alt="사람" class="icon" />
         <img src="/images/chat-icon.png" alt="채팅" class="icon" />
@@ -56,20 +54,18 @@
     </div>
 
     <!-- 모달 창 -->
-    <form action="/add" method="POST">
-      <div id="addFriendModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h4>친구 추가</h4>
-          <p>친구의 이메일을 입력하세요</p>
-          <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
-          <input type="hidden" name="userEmail" value="<%= userEmail %>" />
-          <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
-          <input type="email" name="friendEmail" required />
-          <button type="submit" id="modal-add-button">Add</button>
-        </div>
+    <div id="addFriendModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h4>친구 추가</h4>
+        <p>친구의 이메일을 입력하세요</p>
+        <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
+        <input type="hidden" name="userEmail" value="<%= userEmail %>" />
+        <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
+        <input type="email" name="friendEmail" required />
+        <button type="submit" id="modal-add-button">Add</button>
       </div>
-    </form>
+    </div>
     <script src="/javascripts/friendAdd.js"></script>
     <script src="/javascripts/modal.js"></script>
     <script src="/javascripts/friendRemove.js"></script>

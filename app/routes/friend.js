@@ -2,13 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const friendController = require("../controllers/friendController");
-const authenticateToken = require("../middlewares/authenticateToken");
 
 router.post("/add", friendController.addFriend);
-router.delete(
-  "/remove/:friendEmail",
-  // authenticateToken,
-  friendController.removeFriend
-);
-
+router.delete("/remove/:friendEmail", friendController.removeFriend);
 module.exports = router;

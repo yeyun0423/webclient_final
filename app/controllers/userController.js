@@ -27,7 +27,6 @@ const createUser = async (req, res) => {
       name,
     });
 
-    console.log(newUser);
     // MongoDB에 새로운 사용자 저장
     await newUser.save();
 
@@ -58,9 +57,12 @@ const login = async (req, res) => {
     res.cookie("token", token, { httpOnly: true });
 
     res.render("chat-info", {
+      user: user,
       name: user.name,
       userEmail: user.email,
       friends: user.friends,
+      friendCount: user.friends.length,
+      userId: user._id,
     }); // 친구 목록을 뷰로 전달
   } catch (err) {
     console.error(err.message);

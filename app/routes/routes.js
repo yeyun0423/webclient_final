@@ -8,5 +8,5 @@ const controller = require("./controller");
 // 라우터 설정
 router.get("/login", controller.login);
 router.get("/signup", controller.signup);
-router.get("/chat", controller.chat);
+
 module.exports = router;

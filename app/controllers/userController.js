@@ -55,7 +55,6 @@ const login = async (req, res) => {
 
     const token = jwt.sign({ email: user.email }, jwtSecret);
     res.cookie("token", token, { httpOnly: true });
-
     res.render("chat-info", {
       user: user,
       name: user.name,

@@ -1,10 +1,11 @@
 //경로 /app/routes/chat.js
-
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/userController");
+const chatController = require("../controllers/chatController");
 
-// POST /signup 라우트 - 회원가입 정보를 받아서 MongoDB에 저장
-//router.post("/signup", userController.createUser);
+router.get("/chat", chatController.getMessages);
+router.post("/chat", chatController.postMessage);
+router.get("/chatlist", chatController.chatList);
+router.post("/createChat", chatController.createChat);
 
 module.exports = router;

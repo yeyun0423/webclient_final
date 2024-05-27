@@ -28,6 +28,6 @@ const userSchema = mongoose.Schema({
   ],
 });
 
-const User = mongoose.model("User", userSchema); // userSchema를 model로 감싸준다.
+const User = mongoose.model("User", userSchema);
 
-module.exports = { User }; // User라는 모델을 본 파일 밖에서도 사용할 수 있도록 export 구문을 작성해준다.
+module.exports = { User };

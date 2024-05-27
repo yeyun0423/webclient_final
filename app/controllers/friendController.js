@@ -64,4 +64,30 @@ const removeFriend = async (req, res) => {
   }
 };
 
-module.exports = { addFriend, removeFriend };
+let messages = [];
+
+let loadFirendList = async function (req, res) {
+  const userEmail = req.query.userEmail;
+
+  try {
+    const user = await User.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.status(404).send("사용자를 찾을 수 없습니다");
+    }
+
+    res.render("friend-list", {
+      user: user,
+      name: user.name,
+      userEmail: user.email,
+      friends: user.friends,
+      friendCount: user.friends.length,
+      userId: user._id,
+    });
+  } catch (err) {
+    console.error("사용자 조회 중 오류 발생:", err);
+    return res.status(500).send("서버 내부 오류");
+  }
+};
+
+module.exports = { addFriend, removeFriend, loadFirendList };

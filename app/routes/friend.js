@@ -5,4 +5,5 @@ const friendController = require("../controllers/friendController");
 
 router.post("/add", friendController.addFriend);
 router.delete("/remove/:friendEmail", friendController.removeFriend);
+router.get("/loadFriendList", friendController.loadFirendList);
 module.exports = router;

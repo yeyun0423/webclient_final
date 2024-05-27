@@ -4,42 +4,7 @@
     <meta charset="UTF-8" />
     <title>채팅창</title>
     <link rel="stylesheet" href="/stylesheets/chat.css" />
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var inputs = document.querySelectorAll("input");
-        inputs.forEach(function (input) {
-          input.addEventListener("focus", function () {
-            this.style.outline = "none";
-          });
-        });
-        var sendButton = document.getElementById("send-button");
-        var chatInput = document.getElementById("chat-input");
-        var chatMessages = document.getElementById("chat-messages");
-
-        function sendMessage() {
-          var messageText = chatInput.value.trim();
-          if (messageText) {
-            var newMessage = document.createElement("li");
-            newMessage.classList.add("message");
-            newMessage.textContent = messageText;
-            chatMessages.appendChild(newMessage);
-            chatInput.value = "";
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-          }
-        }
-
-        sendButton.addEventListener("click", function () {
-          sendMessage();
-        });
-
-        chatInput.addEventListener("keypress", function (e) {
-          if (e.key === "Enter") {
-            sendMessage();
-            e.preventDefault();
-          }
-        });
-      });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div class="chat-container">
@@ -55,5 +20,6 @@
         <button class="send-button" id="send-button">보내기</button>
       </div>
     </div>
+    <script src="/javascripts/chat.js"></script>
   </body>
 </html>

@@ -1,0 +1,63 @@
+<!-- 경로: app/views/chat-list.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/chat-list.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="chat-header-bottom">
+      <span class="chat-count">채팅방 개수</span>
+      <img
+        src="/images/add-friend-icon.png"
+        alt="친구 추가"
+        class="add-chat-icon"
+      />
+    </div>
+    <div class="chat-list">
+      <ul>
+        <% if (chats.length > 0) { %> <% chats.forEach(chat => { %>
+        <li class="chat">
+          <div class="chat-info">
+            <span class="chat-name">채팅방: <%= chat._id %></span>
+            <span class="chat-participants"
+              >참여자: <%= chat.participants.join(', ') %></span
+            >
+          </div>
+          <button
+            class="enter-chat-button"
+            onclick="enterChat('<%= chat._id %>')"
+          >
+            입장
+          </button>
+        </li>
+        <% }) %> <% } else { %>
+        <li class="no-chat">채팅방이 없습니다</li>
+        <% } %>
+      </ul>
+    </div>
+    <div class="bottom-bar">
+      <img
+        src="/images/person-icon.png"
+        alt="사람"
+        class="icon"
+        id="person-icon"
+        onclick="loadFriendList('<%= userEmail %>')"
+      />
+      <img
+        src="/images/chat-icon.png"
+        alt="채팅"
+        class="icon"
+        id="chat-icon"
+        onclick="loadChatList('<%= userEmail %>')"
+      />
+    </div>
+    <script src="/javascripts/renderPage.js"></script>
+    <script src="/javascripts/friendAdd.js"></script>
+    <script src="/javascripts/modal.js"></script>
+    <script src="/javascripts/friendRemove.js"></script>
+    <script src="/javascripts/createChat.js"></script>
+  </body>
+</html>

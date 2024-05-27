@@ -1,0 +1,28 @@
+.chat-header-bottom {
+  color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chat-count {
+  font-size: 14px;
+  font-weight: bold;
+}
+.add-chat-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.chat-header-bottom {
+  color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

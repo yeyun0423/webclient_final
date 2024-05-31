@@ -1,3 +1,5 @@
+//경로 /app/public/javascript/renderPage.js
+
 function loadChatList(userEmail) {
   $.ajax({
     url: "/chatlist",
@@ -16,7 +18,7 @@ function loadChatList(userEmail) {
 function loadFriendList(userEmail) {
   $.ajax({
     url: "/loadFriendList",
-    type: "GET",
+    type: "get",
     data: { userEmail },
     success: function (result) {
       $(".renderPage").empty();

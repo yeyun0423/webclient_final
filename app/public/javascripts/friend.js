@@ -1,7 +1,10 @@
-//경로 /app/public/javascript/friendAdd.js
-$("#modal-add-button").click(function () {
+//경로 /app/public/javascript/friend.js
+//친구 추가
+$("#modal-friend-button").click(function () {
+  console.log("friendEmail,userEmail");
   var friendEmail = $('input[name="friendEmail"]').val();
   var userEmail = $('input[name="userEmail"]').val();
+
   $.ajax({
     url: "/add",
     type: "POST",
@@ -31,5 +34,30 @@ $("#modal-add-button").click(function () {
     error: function (xhr, status, error) {
       console.error("친구 추가 실패:", error);
     },
+  });
+});
+
+//친구 삭제
+$(document).ready(function () {
+  $(".friends-list").on("click", ".remove-friend-icon", function () {
+    var friendItem = $(this).closest(".friend-item");
+    var friendEmail = $(this).data("email");
+    var userEmail = $('input[name="userEmail"]').val();
+
+    if (confirm("친구를 삭제하시겠습니까?")) {
+      $.ajax({
+        url: "/remove/" + friendEmail,
+        type: "DELETE",
+        data: { userEmail: userEmail },
+        success: function (result) {
+          friendItem.remove();
+          var friendCount = $(".friend-item").length;
+          $(".friend-count").text(`친구 ${friendCount} 명`);
+        },
+        error: function (err) {
+          console.error("친구 삭제 오류:", err);
+        },
+      });
+    }
   });
 });

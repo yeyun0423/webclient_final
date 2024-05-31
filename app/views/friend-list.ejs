@@ -13,7 +13,7 @@
         src="/images/add-friend-icon.png"
         alt="친구 추가"
         class="add-friend-icon"
-        id="add-friend-button"
+        id="modal-friend-button"
       />
     </div>
     <ul class="friends-list" id="friends-list">
@@ -56,11 +56,10 @@
         onclick="loadChatList('<%= userEmail %>')"
       />
     </div>
-
+    
     <script src="/javascripts/renderPage.js"></script>
-    <script src="/javascripts/friendAdd.js"></script>
-    <script src="/javascripts/modal.js"></script>
-    <script src="/javascripts/friendRemove.js"></script>
-    <script src="/javascripts/createChat.js"></script>
+    <script src="/javascripts/friend.js"></script>
+    <script src="/javascripts/friendModal.js"></script>
+    <script src="/javascripts/Chat.js"></script>
   </body>
 </html>

@@ -3,6 +3,7 @@ const { User } = require("../models/userModel");
 
 const addFriend = async (req, res) => {
   try {
+    
     const userEmail = req.body.userEmail;
     const friendEmail = req.body.friendEmail;
 
@@ -39,7 +40,7 @@ const removeFriend = async (req, res) => {
 
     const friend = await User.findOne({ email: friendEmail });
 
-    console.log(friend);
+
 
     if (!user && !friend) {
       return res
@@ -66,7 +67,7 @@ const removeFriend = async (req, res) => {
 
 let messages = [];
 
-let loadFirendList = async function (req, res) {
+let loadFriendList = async function (req, res) {
   const userEmail = req.query.userEmail;
 
   try {
@@ -90,4 +91,4 @@ let loadFirendList = async function (req, res) {
   }
 };
 
-module.exports = { addFriend, removeFriend, loadFirendList };
+module.exports = { addFriend, removeFriend, loadFriendList };

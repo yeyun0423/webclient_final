@@ -1,17 +1,33 @@
 // 경로: app/models/chatModel.js
 const mongoose = require("mongoose");
 
-const chatSchema = new mongoose.Schema({
+const roomSchema = mongoose.Schema({
   participants: {
     type: [String],
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+  roomName: {
+    type: String,
+    required: true,
   },
+  messages: [
+    {
+      name: {
+        type: String,
+        required: true,
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
-const Chat = mongoose.model("Chat", chatSchema);
+const Room = mongoose.model("Room", roomSchema);
 
-module.exports = { Chat };
+module.exports = { Room };

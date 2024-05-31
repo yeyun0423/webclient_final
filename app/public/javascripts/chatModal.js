@@ -1,8 +1,8 @@
-//경로 /app/public/javascript/modal.js
+//경로 /app/public/javascript/chatModal.js
 
 // 모달 열기
-var modal = document.getElementById("addFriendModal");
-var btn = document.getElementById("add-friend-button");
+var modal = document.getElementById("addChatModal");
+var btn = document.getElementById("add-chat-button");
 
 btn.onclick = function () {
   modal.style.display = "block";

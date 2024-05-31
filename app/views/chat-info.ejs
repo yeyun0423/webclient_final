@@ -17,7 +17,7 @@
       <div class="renderPage"></div>
     </div>
 
-    <!-- 모달 창 -->
+    <!-- 친구 추가 모달 창 -->
     <div id="addFriendModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -27,10 +27,11 @@
         <input type="hidden" name="userEmail" value="<%= userEmail %>" />
         <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
         <input type="email" name="friendEmail" required id="friendEmail" />
-        <button type="submit" id="modal-add-button">Add</button>
+        <button type="submit" id="modal-friend-button">Add</button>
       </div>
     </div>
 
+     <!-- 채팅방 추가 모달 창 -->
     <div id="addChatModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -40,13 +41,14 @@
         <input type="hidden" name="userEmail" value="<%= userEmail %>" />
         <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
         <input type="email" name="friendEmail" required id="friendEmail" />
-        <button type="submit" id="modal-chatAdd-button">Add</button>
+        <input type="submit" id="modal-chat-button">Add</input>
       </div>
     </div>
-    <script src="/javascripts/friendAdd.js"></script>
-    <script src="/javascripts/modal.js"></script>
-    <script src="/javascripts/friendRemove.js"></script>
+    <script src="/javascripts/friend.js"></script>
+   
+    <script src="/javascripts/chatModal.js"></script>
+
     <script src="/javascripts/renderPage.js"></script>
-    <script src="/javascripts/createChat.js"></script>
+    <script src="/javascripts/chat.js"></script>
   </body>
 </html>

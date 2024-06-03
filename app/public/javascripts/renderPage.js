@@ -1,10 +1,11 @@
 //경로 /app/public/javascript/renderPage.js
+const userEmail = $("input[name='userEmail']").val();
 
-function loadChatList(userEmail) {
+function loadChatList() {
   $.ajax({
     url: "/chatlist",
     type: "GET",
-    data: { userEmail },
+    data: { userEmail: userEmail },
     success: function (result) {
       $(".renderPage").empty();
       $(".renderPage").html(result);
@@ -15,7 +16,7 @@ function loadChatList(userEmail) {
   });
 }
 
-function loadFriendList(userEmail) {
+function loadFriendList() {
   $.ajax({
     url: "/loadFriendList",
     type: "get",
@@ -29,17 +30,17 @@ function loadFriendList(userEmail) {
     },
   });
 }
-const userEmail = $("input[name='userEmail']").val();
+
 
 $(document).ready(function () {
-  loadFriendList(userEmail);
+  loadFriendList();
 });
 
 $("#chat-icon").on("click", function () {
-  loadChatList(userEmail);
+  loadChatList();
 });
 $("#person-icon").on("click", function () {
-  loadFriendList(userEmail);
+  loadFriendList();
 });
 function enterChat(chatId) {
   window.location.href = `/chat/${chatId}`;

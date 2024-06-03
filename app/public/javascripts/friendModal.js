@@ -2,7 +2,7 @@
 
 // 모달 열기
 var modal = document.getElementById("addFriendModal");
-var btn = document.getElementById("modal-friend-button");
+var btn = document.getElementById("add-friend-button");
 
 
 btn.onclick = function () {

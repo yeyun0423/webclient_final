@@ -7,6 +7,8 @@ const addFriend = async (req, res) => {
     const userEmail = req.body.userEmail;
     const friendEmail = req.body.friendEmail;
 
+    console.log(userEmail,friendEmail);
+
     const user = await User.findOne({ email: userEmail }).populate("friends");
     const friend = await User.findOne({ email: friendEmail });
 

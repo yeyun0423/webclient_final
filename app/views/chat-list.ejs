@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="chat-header-bottom">
-      <span class="chat-count">채팅방 <%= chats.length %>개</span>
+      <span class="chat-count">채팅방 개</span>
       <img
         src="/images/add-friend-icon.png"
         alt="채팅방 추가"
@@ -19,18 +19,17 @@
     </div>
     <div class="chat-list">
       <ul>
-        <% if (chats && chats.length > 0) { %>
-          <% chats.forEach(chat => { %>
+        <% if (room.length > 0) { %>
+          <% room.forEach(room => { %>
             <li class="chat">
               <div class="chat-info">
-                <span class="chat-name">채팅방: <%= chat.roomName %></span>
+                <span class="chat-name">채팅방: <%= room.name %></span>
                 <span class="chat-participants">
-                  참여자: <%= chat.participants.join(', ') %></span
+                  참여자: <%= room.participants.join(', ') %></span
             >
           </div>
           <button
             class="enter-chat-button"
-            onclick="enterChat('<%= chat._id %>')"
           >
             입장
           </button>
@@ -56,19 +55,7 @@
         onclick="loadChatList('<%= userEmail %>')"
       />
     </div>
-    <!-- 채팅방 추가 모달 창 -->
-    <div id="addChatModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h4>채팅방 추가</h4>
-        <p>친구의 이메일을 입력하세요</p>
-        <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
-        <input type="hidden" name="userEmail" value="<%= userEmail %>" />
-        <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
-        <input type="email" name="friendEmail" required id="friendEmail" />
-        <button type="submit" id="model-chat-button">Add</button>
-      </div>
-    </div>
+    
     <script src="/javascripts/renderPage.js"></script>
     <script src="/javascripts/chatModal.js"></script>
     <script src="/javascripts/friend.js"></script>

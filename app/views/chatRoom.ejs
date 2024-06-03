@@ -11,6 +11,7 @@
       <div class="chat-header">채팅</div>
       <ul class="chat-messages" id="chat-messages"></ul>
       <div class="chat-footer">
+        <input type="hidden" name="userEmail" value="<%= userEmail %>" />
         <input
           type="text"
           class="chat-input"
@@ -21,5 +22,6 @@
       </div>
     </div>
     <script src="/javascripts/chatRoom.js"></script>
+    <script src="/javascripts/room.js"></script>
   </body>
 </html>

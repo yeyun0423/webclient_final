@@ -31,7 +31,6 @@ function loadFriendList() {
   });
 }
 
-
 $(document).ready(function () {
   loadFriendList();
 });
@@ -42,6 +41,12 @@ $("#chat-icon").on("click", function () {
 $("#person-icon").on("click", function () {
   loadFriendList();
 });
-function enterChat(chatId) {
-  window.location.href = `/chat/${chatId}`;
+
+let roomId;
+
+function enterChat(chatId, userEmail) {
+  roomId = chatId;
+  window.location.href = `/chat/${roomId}?userEmail=${encodeURIComponent(
+    userEmail
+  )}`;
 }

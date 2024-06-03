@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var sendButton = document.getElementById("send-button");
   var chatInput = document.getElementById("chat-input");
   var chatMessages = document.getElementById("chat-messages");
+  var userEmail = $('input[name="userEmail"]').val();
+
+  const path = window.location.pathname;
+  const pathSegments = path.split("/");
+  const roomId = pathSegments[pathSegments.length - 1];
 
   function sendMessage() {
     var messageText = chatInput.value.trim();
@@ -20,6 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
       chatInput.value = "";
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
+    $.ajax({
+      url: `/sendMessage/${roomId}`,
+      type: "post",
+      data: {
+        messageText,
+        userEmail,
+      },
+
+      success: function (response) {
+        console.log("전송 성공");
+      },
+      error: function (xhr, status, error) {},
+    });
   }
 
   sendButton.addEventListener("click", function () {

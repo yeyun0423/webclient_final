@@ -39,7 +39,7 @@ let createRoom = async function (req, res) {
       });
       await room.save();
     }
-    res.tatus(201).json("채팅방 생성 성공");
+    res.status(201).json("채팅방 생성 성공");
     s;
   } catch (err) {
     console.error("채팅방 생성 실패:", err);

@@ -16,29 +16,41 @@ document.addEventListener("DOMContentLoaded", function () {
   const roomId = pathSegments[pathSegments.length - 1];
 
   function sendMessage() {
-    var messageText = chatInput.value.trim();
+    var messageText = $("#chat-input").val().trim();
     if (messageText) {
-      var newMessage = document.createElement("li");
-      newMessage.classList.add("message");
-      newMessage.textContent = messageText;
-      chatMessages.appendChild(newMessage);
-      chatInput.value = "";
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      var newMessage = $("<li>").addClass("message right");
+      var messageContent = $("<p>").text(messageText); // 메시지 텍스트를 p 요소로 만듭니다.
+      newMessage.append(messageContent); // 메시지 텍스트를 메시지 요소에 추가합니다.
+
+      var currentTime = new Date();
+      var hours = currentTime.getHours().toString().padStart(2, "0");
+      var minutes = currentTime.getMinutes().toString().padStart(2, "0");
+      var formattedTime = hours + ":" + minutes;
+
+      var messageTime = $("<span>")
+        .addClass("message-time")
+        .text(formattedTime);
+      newMessage.append(messageTime);
+
+      $("#chat-messages").append(newMessage);
+      $("#chat-input").val("");
+      $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+
+      $.ajax({
+        url: `/sendMessage/${roomId}`,
+        type: "post",
+        data: {
+          messageText,
+          userEmail,
+        },
+        success: function (response) {
+          console.log("전송 성공");
+        },
+        error: function (xhr, status, error) {
+          console.error("전송 실패:", error);
+        },
+      });
     }
-
-    $.ajax({
-      url: `/sendMessage/${roomId}`,
-      type: "post",
-      data: {
-        messageText,
-        userEmail,
-      },
-
-      success: function (response) {
-        console.log("전송 성공");
-      },
-      error: function (xhr, status, error) {},
-    });
   }
 
   sendButton.addEventListener("click", function () {

@@ -6,7 +6,6 @@ body {
   background-color: #f0f0f0;
   font-family: "Noto Sans", sans-serif;
 }
-
 .chat-container {
   width: 360px;
   background-color: #ffffff;
@@ -14,7 +13,6 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   margin-top: 200px;
 }
-
 .chat-header {
   background-color: #978ff9;
   color: white;
@@ -24,7 +22,6 @@ body {
   border-top-right-radius: 16px;
   font-weight: bold;
 }
-
 .chat-messages {
   list-style: none;
   padding: 20px;
@@ -33,32 +30,29 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .message {
-  margin-bottom: 12px;
-  padding: 12px;
+  margin-bottom: 8px; /* 메시지 간격 줄이기 */
+  padding: 8px; /* 메시지 패딩 줄이기 */
   border-radius: 12px;
   color: black;
   max-width: 70%;
   text-align: left;
+  font-size: 14px; /* 글씨 크기 px로 줄이기 */
+  position: relative; /* 시간 표시를 위해 추가 */
 }
-
 .message.right {
   background-color: #978ff9;
   color: white;
   margin-left: auto;
 }
-
 .message.left {
   background-color: #f0f0f0;
   margin-right: auto;
 }
-
 .chat-footer {
   display: flex;
   padding: 10px;
 }
-
 .chat-input {
   flex: 1;
   padding: 10px;
@@ -67,7 +61,6 @@ body {
   border-radius: 16px;
   background-color: #ffffff;
 }
-
 .send-button {
   background-color: #978ff9;
   color: white;
@@ -76,13 +69,14 @@ body {
   border-radius: 16px;
   cursor: pointer;
 }
-
 .send-button:hover {
   background-color: #7a68c7;
 }
-
 .message-time {
-  font-size: 0.8em;
+  font-size: 12px; /* 글씨 크기 px로 조정 */
   color: #666;
   margin-left: 8px;
+  position: absolute; /* 시간 위치 조정 */
+  bottom: -18px; /* 메시지 아래에 시간 표시 */
+  right: 8px; /* 오른쪽에 시간 표시 */
 }

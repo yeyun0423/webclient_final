@@ -1,3 +1,4 @@
+//경로 app/public/javascripts/room.js
 const path = window.location.pathname;
 const pathSegments = path.split("/");
 const roomId = pathSegments[pathSegments.length - 1];
@@ -34,13 +35,15 @@ function loadMessages() {
     },
   });
 }
-
 function displayMessages(messages) {
   $("#chat-messages").empty();
 
   messages.forEach(function (message) {
     const messageElement = $("<li>").addClass("message");
     const messageContent = $("<p>").text(message.text);
+    const messageTime = $("<span>")
+      .addClass("message-time")
+      .text(message.timestamp || "시간 없음");
 
     if (message.name === userEmail) {
       messageElement.addClass("right");
@@ -49,30 +52,7 @@ function displayMessages(messages) {
     }
 
     messageElement.append(messageContent);
+    messageElement.append(messageTime); // 시간 요소 추가
     $("#chat-messages").append(messageElement);
   });
-}
-
-function sendMessage() {
-  const messageContent = $("#chat-input").val().trim();
-  var userEmail = $('input[name="userEmail"]').val();
-  console.log(userEmail);
-  if (messageContent !== "") {
-    $.ajax({
-      url: "/sendMessage",
-      type: "post",
-      data: {
-        roomId: roomId,
-        userEmail: userEmail,
-        content: messageContent,
-      },
-      success: function (response) {
-        $("#chat-input").val(""); // 입력 필드를 비웁니다.
-        loadMessages(); // 메시지를 다시 불러옵니다.
-      },
-      error: function (err) {
-        console.log("전송 오류:", err);
-      },
-    });
-  }
 }

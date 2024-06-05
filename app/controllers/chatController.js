@@ -23,6 +23,7 @@ let createRoom = async function (req, res) {
   const friendEmail = req.body.friendEmail;
 
   const friend = await User.findOne({ email: friendEmail });
+  const user = await User.findOne({ email: userEmail });
   try {
     let room = await Room.findOne({
       participants: { $all: [userEmail, friendEmail] },
@@ -30,7 +31,7 @@ let createRoom = async function (req, res) {
     const userRooms = await Room.find({
       participants: userEmail,
     });
-
+    const roomName = `${user.name},${friend.name}`;
     if (!friend) {
       return res.status(404).json({ message: "친구를 찾을 수 없음" });
     }
@@ -38,7 +39,7 @@ let createRoom = async function (req, res) {
       room = new Room({
         participants: [userEmail, friendEmail],
         messages: [],
-        roomName: friend.name,
+        roomName: roomName,
       });
       await room.save();
     }
@@ -81,11 +82,16 @@ let postMessage = async (req, res) => {
   const roomId = req.params.id;
   const message = req.body.messageText;
   const user = req.body.userEmail;
+  //const timestamp = req.body.timestamp;
 
   try {
     let room = await Room.findById(roomId);
     if (room) {
-      room.messages.push({ name: user, text: message, createdAt: new Date() });
+      room.messages.push({
+        name: user,
+        text: message,
+        createdAt: new Date(),
+      });
       await room.save();
       res.status(201).json({ message: "메시지가 저장됨" });
     } else {
@@ -99,7 +105,10 @@ let postMessage = async (req, res) => {
 
 let enterRoom = async (req, res) => {
   const userEmail = req.query.userEmail;
-  res.render("chatRoom", { userEmail: userEmail });
+  const roomId = req.params._id;
+  const room = await Room.findById(roomId);
+
+  res.render("chatRoom", { userEmail: userEmail, roomName: room.roomName });
 };
 
 module.exports = {

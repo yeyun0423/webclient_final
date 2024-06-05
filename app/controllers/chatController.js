@@ -23,11 +23,14 @@ let createRoom = async function (req, res) {
   const friendEmail = req.body.friendEmail;
 
   const friend = await User.findOne({ email: friendEmail });
-
   try {
     let room = await Room.findOne({
       participants: { $all: [userEmail, friendEmail] },
     });
+    const userRooms = await Room.find({
+      participants: userEmail,
+    });
+
     if (!friend) {
       return res.status(404).json({ message: "친구를 찾을 수 없음" });
     }
@@ -39,10 +42,21 @@ let createRoom = async function (req, res) {
       });
       await room.save();
     }
-    res.status(201).json("채팅방 생성 성공");
-    s;
+    res.status(200).json({ rooms: userRooms });
   } catch (err) {
     console.error("채팅방 생성 실패:", err);
+    return res.status(500).send("서버 내부 오류");
+  }
+};
+
+const fetchChatRooms = async (req, res) => {
+  const userEmail = req.query.userEmail;
+  try {
+    const userRooms = await Room.find({
+      participants: userEmail,
+    });
+    res.status(200).json({ rooms: userRooms });
+  } catch (err) {
     return res.status(500).send("서버 내부 오류");
   }
 };
@@ -93,4 +107,5 @@ module.exports = {
   chatList,
   createRoom,
   enterRoom,
+  fetchChatRooms,
 };

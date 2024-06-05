@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="chat-header-bottom">
-      <span class="chat-count">채팅방 개</span>
+      <span class="chat-count"></span>
       <img
         src="/images/add-friend-icon.png"
         alt="채팅방 추가"
@@ -18,24 +18,7 @@
       />
     </div>
     <div class="chat-list">
-      <ul>
-        <% if (room.length > 0) { %> <% room.forEach(room => { %>
-        <li class="chat">
-          <div class="chat-info">
-            <span class="chat-name">채팅방: <%= room.name %></span>
-            <span class="chat-participants">
-              참여자: <%= room.participants.join(', ') %></span
-            >
-          </div>
-          <button
-            class="enter-chat-button"
-            onclick="enterChat('<%= room._id %>', '<%= userEmail %>')"
-          >
-            입장
-          </button>
-        </li>
-        <% }) %> <% } else { %> <% } %>
-      </ul>
+      <ul id="rooms-list"></ul>
     </div>
     <div class="bottom-bar">
       <img
@@ -45,17 +28,12 @@
         id="person-icon"
         onclick="loadFriendList('<%= userEmail %>')"
       />
-      <img
-        src="/images/chat-icon.png"
-        alt="채팅"
-        class="icon"
-        id="chat-icon"
-        onclick="loadChatList('<%= userEmail %>')"
-      />
+      <img src="/images/chat-icon.png" alt="채팅" class="icon" id="chat-icon" />
     </div>
 
     <script src="/javascripts/renderPage.js"></script>
     <script src="/javascripts/chatModal.js"></script>
     <script src="/javascripts/friend.js"></script>
+    <script src="/javascripts/chat.js"></script>
   </body>
 </html>

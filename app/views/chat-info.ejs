@@ -31,7 +31,7 @@
       </div>
     </div>
 
-     <!-- 채팅방 추가 모달 창 -->
+    <!-- 채팅방 추가 모달 창 -->
     <div id="addChatModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -40,14 +40,18 @@
         <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
         <input type="hidden" name="chatUserEmail" value="<%= userEmail %>" />
         <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
-        <input type="email" name="chatFriendEmail" required id="chatFriendEmail" />
+        <input
+          type="email"
+          name="chatFriendEmail"
+          required
+          id="chatFriendEmail"
+        />
         <button type="submit" id="modal-chat-button">Add</button>
       </div>
     </div>
     <script src="/javascripts/friend.js"></script>
-   
+    <script src="/javascripts/chat.js"></script>
     <!-- <script src="/javascripts/chatModal.js"></script> -->
-  <script src="/javascripts/renderPage.js"></script>
-    <!-- <script src="/javascripts/chat.js"></script> -->
+    <script src="/javascripts/renderPage.js"></script>
   </body>
 </html>

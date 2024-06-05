@@ -3,15 +3,11 @@ const { User } = require("../models/userModel");
 
 const addFriend = async (req, res) => {
   try {
-    
     const userEmail = req.body.userEmail;
     const friendEmail = req.body.friendEmail;
 
-    console.log(userEmail,friendEmail);
-
-    const user = await User.findOne({ email: userEmail }).populate("friends");
+    const user = await User.findOne({ email: userEmail });
     const friend = await User.findOne({ email: friendEmail });
-
     if (!user || !friend) {
       return res.status(404).json({ msg: "사용자가 존재하지 않습니다." });
     }
@@ -19,9 +15,9 @@ const addFriend = async (req, res) => {
     if (user.friends.some((friend) => friend.email === friendEmail)) {
       return res.status(400).json({ msg: "이미 친구입니다." });
     }
-
     user.friends.push({ email: friendEmail, name: friend.name });
     friend.friends.push({ email: userEmail, name: user.name });
+
     await user.save();
     await friend.save();
     res.json({
@@ -41,9 +37,6 @@ const removeFriend = async (req, res) => {
     const user = await User.findOne({ email: userEmail });
 
     const friend = await User.findOne({ email: friendEmail });
-
-
-
     if (!user && !friend) {
       return res
         .status(404)
@@ -66,8 +59,6 @@ const removeFriend = async (req, res) => {
     res.status(500).json({ msg: "서버 오류 발생" });
   }
 };
-
-let messages = [];
 
 let loadFriendList = async function (req, res) {
   const userEmail = req.query.userEmail;
@@ -92,5 +83,7 @@ let loadFriendList = async function (req, res) {
     return res.status(500).send("서버 내부 오류");
   }
 };
+
+const loadFriends = async (req, res) => {};
 
 module.exports = { addFriend, removeFriend, loadFriendList };

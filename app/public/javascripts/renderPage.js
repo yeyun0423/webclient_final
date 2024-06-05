@@ -9,6 +9,7 @@ function loadChatList() {
     success: function (result) {
       $(".renderPage").empty();
       $(".renderPage").html(result);
+      fetchChatRooms();
     },
     error: function (err) {
       console.error("챗 리스트 불러오기 오류:", err);
@@ -20,7 +21,7 @@ function loadFriendList() {
   $.ajax({
     url: "/loadFriendList",
     type: "get",
-    data: { userEmail },
+    data: { userEmail: userEmail },
     success: function (result) {
       $(".renderPage").empty();
       $(".renderPage").html(result);

@@ -55,7 +55,8 @@ function displayMessages(messages) {
 
 function sendMessage() {
   const messageContent = $("#chat-input").val().trim();
-
+  var userEmail = $('input[name="userEmail"]').val();
+  console.log(userEmail);
   if (messageContent !== "") {
     $.ajax({
       url: "/sendMessage",

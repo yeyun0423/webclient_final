@@ -5,8 +5,12 @@ const loadChatRooms = (response) => {
   $(".chat-count").append(`
     채팅방 ${response.rooms.length} 개
   `);
+
   if (response.rooms.length > 0) {
     response.rooms.forEach(function (room) {
+      console.log(room.messages);
+      const roomId = `${room._id}`;
+      console.log(roomId);
       $("#rooms-list").append(`
         <li class="chat">
           <div class="chat-info">
@@ -15,9 +19,7 @@ const loadChatRooms = (response) => {
               ", "
             )}</span>
           </div>
-          <button class="enter-chat-button" onclick="enterChat('${
-            room._id
-          }', '${room.userEmail}')">입장</button>
+          <button class="enter-chat-button" onclick="enterChat('${roomId}')">입장</button>
         </li>
       `);
     });

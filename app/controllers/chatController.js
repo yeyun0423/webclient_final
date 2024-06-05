@@ -81,6 +81,7 @@ let postMessage = async (req, res) => {
   const roomId = req.params.id;
   const message = req.body.messageText;
   const user = req.body.userEmail;
+
   try {
     let room = await Room.findById(roomId);
     if (room) {

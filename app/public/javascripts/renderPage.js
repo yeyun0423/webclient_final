@@ -42,10 +42,9 @@ $("#chat-icon").on("click", function () {
 $("#person-icon").on("click", function () {
   loadFriendList();
 });
-
 let roomId;
 
-function enterChat(chatId, userEmail) {
+function enterChat(chatId) {
   roomId = chatId;
   window.location.href = `/chat/${roomId}?userEmail=${encodeURIComponent(
     userEmail

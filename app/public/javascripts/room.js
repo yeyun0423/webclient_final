@@ -28,6 +28,7 @@ function loadMessages() {
     type: "get",
     data: { roomId },
     success: function (result) {
+      console.log(result);
       displayMessages(result);
     },
     error: function (err) {
@@ -39,11 +40,18 @@ function displayMessages(messages) {
   $("#chat-messages").empty();
 
   messages.forEach(function (message) {
+    const date = new Date(message.createdAt);
+    const options = {
+      timeZone: "Asia/Seoul",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    const koreanTime = date.toLocaleString("ko-KR", options);
     const messageElement = $("<li>").addClass("message");
     const messageContent = $("<p>").text(message.text);
     const messageTime = $("<span>")
       .addClass("message-time")
-      .text(message.timestamp || "시간 없음");
+      .text(koreanTime || "시간 없음");
 
     if (message.name === userEmail) {
       messageElement.addClass("right");

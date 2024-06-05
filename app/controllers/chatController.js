@@ -67,6 +67,7 @@ let getMessages = async (req, res) => {
 
   try {
     let room = await Room.findById(roomId);
+
     if (room) {
       res.status(201).json(room.messages);
     } else {

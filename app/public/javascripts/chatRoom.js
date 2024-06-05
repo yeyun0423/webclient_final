@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   var sendButton = document.getElementById("send-button");
   var chatInput = document.getElementById("chat-input");
-  var chatMessages = document.getElementById("chat-messages");
   var userEmail = $('input[name="userEmail"]').val();
 
   const path = window.location.pathname;
@@ -21,11 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var newMessage = $("<li>").addClass("message right");
       var messageContent = $("<p>").text(messageText); // 메시지 텍스트를 p 요소로 만듭니다.
       newMessage.append(messageContent); // 메시지 텍스트를 메시지 요소에 추가합니다.
-
-      var currentTime = new Date();
-      var hours = currentTime.getHours().toString().padStart(2, "0");
-      var minutes = currentTime.getMinutes().toString().padStart(2, "0");
-      var formattedTime = hours + ":" + minutes;
 
       var messageTime = $("<span>")
         .addClass("message-time")

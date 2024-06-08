@@ -12,7 +12,7 @@ function loadChatList() {
       fetchChatRooms();
     },
     error: function (err) {
-      console.error("챗 리스트 불러오기 오류:", err);
+      console.error("loadChatList() 오류:", err);
     },
   });
 }
@@ -27,7 +27,7 @@ function loadFriendList() {
       $(".renderPage").html(result);
     },
     error: function (err) {
-      console.error("친구 리스트 불러오기 오류:", err);
+      console.error("loadFriendList() 오류:", err);
     },
   });
 }

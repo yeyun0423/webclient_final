@@ -2,9 +2,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 100vh;
   background-color: #f0f0f0;
   font-family: "Noto Sans", sans-serif;
+  margin: 0;
 }
 
 .friends-container {
@@ -13,7 +14,6 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   height: 500px;
-  margin-top: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #ccc; /* 경계선 추가 */
+  border-bottom: 1px solid #ccc;
 }
 
 .header-content {
@@ -122,7 +122,6 @@ body {
   width: 24px;
   height: 24px;
 }
-/* 모달 기본 스타일 */
 .modal {
   display: none;
   position: fixed;

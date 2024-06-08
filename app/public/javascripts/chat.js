@@ -1,4 +1,3 @@
-// 채팅방 로드 함수
 const loadChatRooms = (response) => {
   $("#rooms-list").empty();
   $(".chat-count").empty();
@@ -29,7 +28,7 @@ const loadChatRooms = (response) => {
 };
 
 const fetchChatRooms = () => {
-  const userEmail = $('input[name="chatUserEmail"]').val(); // 사용자 이메일을 가져옵니다.
+  const userEmail = $('input[name="chatUserEmail"]').val();
   $.ajax({
     url: "/getUserRooms",
     type: "GET",
@@ -38,7 +37,7 @@ const fetchChatRooms = () => {
       loadChatRooms(response);
     },
     error: function (xhr, status, error) {
-      console.error("채팅방 목록 가져오기 실패:", error);
+      console.error("fetchChatRooms 오류", error);
     },
   });
 };

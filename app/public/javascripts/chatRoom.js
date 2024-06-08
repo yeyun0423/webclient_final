@@ -1,4 +1,3 @@
-//경로 /app/public/javascript/chatRoom.js
 document.addEventListener("DOMContentLoaded", function () {
   var inputs = document.querySelectorAll("input");
   inputs.forEach(function (input) {
@@ -18,12 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var messageText = $("#chat-input").val().trim();
     if (messageText) {
       var newMessage = $("<li>").addClass("message right");
-      var messageContent = $("<p>").text(messageText); // 메시지 텍스트를 p 요소로 만듭니다.
-      newMessage.append(messageContent); // 메시지 텍스트를 메시지 요소에 추가합니다.
+      var messageContent = $("<p>").text(messageText);
+      newMessage.append(messageContent);
 
-      var messageTime = $("<span>")
-        .addClass("message-time")
-        .text(formattedTime);
+      var messageTime = $("<span>").addClass("message-time");
       newMessage.append(messageTime);
 
       $("#chat-messages").append(newMessage);
@@ -46,15 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
-
   sendButton.addEventListener("click", function () {
     sendMessage();
-  });
-
-  chatInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendMessage();
-      e.preventDefault();
-    }
   });
 });

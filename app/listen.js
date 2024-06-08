@@ -1,4 +1,3 @@
-// 경로 ./app/listen.js
 const http = require("http");
 const app = require("./app");
 

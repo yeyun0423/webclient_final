@@ -1,4 +1,3 @@
-// 경로: app/controllers/chatController.js
 const { User } = require("../models/userModel");
 const { Room } = require("../models/chatModel");
 
@@ -13,8 +12,7 @@ let chatList = async function (req, res) {
       userEmail: userEmail,
     });
   } catch (err) {
-    // console.error("사용자 조회 중 오류 발생:", err);
-    return res.status(500).send("서버 내부 오류");
+    return res.status(500).send("서버 오류");
   }
 };
 
@@ -33,7 +31,7 @@ let createRoom = async function (req, res) {
     });
     const roomName = `${user.name},${friend.name}`;
     if (!friend) {
-      return res.status(404).json({ message: "친구를 찾을 수 없음" });
+      return res.status(404).json({ message: "친구를 찾을 수 없습니다." });
     }
     if (!room) {
       room = new Room({
@@ -45,8 +43,8 @@ let createRoom = async function (req, res) {
     }
     res.status(200).json({ rooms: userRooms });
   } catch (err) {
-    console.error("채팅방 생성 실패:", err);
-    return res.status(500).send("서버 내부 오류");
+    console.error("createRoom 실패:", err);
+    return res.status(500).send("서버 오류");
   }
 };
 
@@ -58,7 +56,7 @@ const fetchChatRooms = async (req, res) => {
     });
     res.status(200).json({ rooms: userRooms });
   } catch (err) {
-    return res.status(500).send("서버 내부 오류");
+    return res.status(500).send("서버 오류");
   }
 };
 
@@ -71,11 +69,10 @@ let getMessages = async (req, res) => {
     if (room) {
       res.status(201).json(room.messages);
     } else {
-      res.status(404).json({ message: "방을 찾을 수 없음" });
+      res.status(404).json({ message: "방을 찾을 수 없습니다." });
     }
   } catch (err) {
-    console.error("메시지 가져오기 중 오류 발생:", err);
-    res.status(500).send("서버 내부 오류");
+    res.status(500).send("서버 오류");
   }
 };
 
@@ -83,7 +80,6 @@ let postMessage = async (req, res) => {
   const roomId = req.params.id;
   const message = req.body.messageText;
   const user = req.body.userEmail;
-  //const timestamp = req.body.timestamp;
 
   try {
     let room = await Room.findById(roomId);
@@ -91,16 +87,16 @@ let postMessage = async (req, res) => {
       room.messages.push({
         name: user,
         text: message,
-        createdAt: new Date(),
+        time: new Date(),
       });
       await room.save();
-      res.status(201).json({ message: "메시지가 저장됨" });
+      res.status(201).json({ message: "메시지가 저장되었습니다.." });
     } else {
-      res.status(404).json({ message: "방을 찾을 수 없음" });
+      res.status(404).json({ message: "방을 찾을 수 없습니다." });
     }
   } catch (err) {
-    console.error("메시지 저장 중 오류 발생:", err);
-    res.status(500).send("서버 내부 오류");
+    console.error("메시지 저장 오류", err);
+    res.status(500).send("서버 오류");
   }
 };
 

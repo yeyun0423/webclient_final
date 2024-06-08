@@ -1,4 +1,3 @@
-// 경로: app/models/chatModel.js
 const mongoose = require("mongoose");
 
 const roomSchema = mongoose.Schema({
@@ -20,7 +19,7 @@ const roomSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-      createdAt: {
+      time: {
         type: Date,
         default: Date.now,
       },

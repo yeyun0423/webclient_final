@@ -1,4 +1,3 @@
-<!-- 경로 app/views/chat-info.ejs -->
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -20,12 +19,9 @@
     <!-- 친구 추가 모달 창 -->
     <div id="addFriendModal" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
         <h4>친구 추가</h4>
         <p>친구의 이메일을 입력하세요</p>
-        <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
         <input type="hidden" name="userEmail" value="<%= userEmail %>" />
-        <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
         <input type="email" name="friendEmail" required id="friendEmail" />
         <button type="submit" id="modal-friend-button">Add</button>
       </div>
@@ -34,12 +30,9 @@
     <!-- 채팅방 추가 모달 창 -->
     <div id="addChatModal" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
         <h4>채팅방 추가</h4>
         <p>친구의 이메일을 입력하세요</p>
-        <!-- 사용자 이메일을 위한 숨겨진 필드 추가 -->
         <input type="hidden" name="chatUserEmail" value="<%= userEmail %>" />
-        <!-- 친구 이메일 입력 필드에 name 속성 추가 -->
         <input
           type="email"
           name="chatFriendEmail"
@@ -51,7 +44,6 @@
     </div>
     <script src="/javascripts/friend.js"></script>
     <script src="/javascripts/chat.js"></script>
-    <!-- <script src="/javascripts/chatModal.js"></script> -->
     <script src="/javascripts/renderPage.js"></script>
   </body>
 </html>

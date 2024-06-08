@@ -10,19 +10,12 @@ $(document).ready(function () {
   $("#send-button").click(function () {
     sendMessage();
   });
-
-  $("#chat-input").keypress(function (e) {
-    if (e.which === 13) {
-      // 엔터 키를 누를 때
-      sendMessage();
-    }
-  });
 });
 
 var userEmail = $('input[name="userEmail"]').val();
 
 function loadMessages() {
-  console.log("loadMessages 실행");
+  console.log("loadMessages() 실행");
   $.ajax({
     url: "/getMessage",
     type: "get",
@@ -32,7 +25,7 @@ function loadMessages() {
       displayMessages(result);
     },
     error: function (err) {
-      console.log("불러오기 오류:", err);
+      console.log("loadMessages() 오류:", err);
     },
   });
 }
@@ -40,7 +33,7 @@ function displayMessages(messages) {
   $("#chat-messages").empty();
 
   messages.forEach(function (message) {
-    const date = new Date(message.createdAt);
+    const date = new Date(message.time);
     const options = {
       timeZone: "Asia/Seoul",
       hour: "numeric",
@@ -60,7 +53,7 @@ function displayMessages(messages) {
     }
 
     messageElement.append(messageContent);
-    messageElement.append(messageTime); // 시간 요소 추가
+    messageElement.append(messageTime);
     $("#chat-messages").append(messageElement);
   });
 }

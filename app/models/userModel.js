@@ -1,4 +1,3 @@
-//경로 app/models/userModel.js
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({

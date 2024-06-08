@@ -1,5 +1,3 @@
-//경로 /app/public/javascript/friend.js
-//친구 추가
 $("#modal-friend-button")
   .off("click")
   .on("click", function () {
@@ -52,7 +50,7 @@ $(document).ready(function () {
           $(".friend-count").text(`친구 ${friendCount} 명`);
         },
         error: function (err) {
-          console.error("친구 삭제 오류:", err);
+          console.error("친구 삭제 실패:", err);
         },
       });
     }

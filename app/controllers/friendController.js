@@ -1,4 +1,3 @@
-//경로 app/controllers/friendController.js
 const { User } = require("../models/userModel");
 
 const addFriend = async (req, res) => {
@@ -24,7 +23,7 @@ const addFriend = async (req, res) => {
       user,
     });
   } catch (err) {
-    console.error("친구 추가 중 오류 발생:", err.message);
+    console.error("addFriend 실패", err.message);
     res.status(500).json({ msg: "서버 오류" });
   }
 };
@@ -56,7 +55,7 @@ const removeFriend = async (req, res) => {
     res.status(200).json({ msg: "친구가 삭제되었습니다." });
   } catch (err) {
     console.error(err.message);
-    res.status(500).json({ msg: "서버 오류 발생" });
+    res.status(500).json({ msg: "서버 오류 " });
   }
 };
 
@@ -79,8 +78,8 @@ let loadFriendList = async function (req, res) {
       userId: user._id,
     });
   } catch (err) {
-    console.error("사용자 조회 중 오류 발생:", err);
-    return res.status(500).send("서버 내부 오류");
+    console.error("loadFriendList 오류", err);
+    return res.status(500).send("서버 오류");
   }
 };
 

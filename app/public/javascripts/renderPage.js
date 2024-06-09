@@ -1,4 +1,3 @@
-//경로 /app/public/javascript/renderPage.js
 const userEmail = $("input[name='userEmail']").val();
 
 function loadChatList() {

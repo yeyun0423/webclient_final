@@ -67,7 +67,7 @@ let getMessages = async (req, res) => {
     let room = await Room.findById(roomId);
 
     if (room) {
-      res.status(201).json(room.messages);
+      res.status(200).json(room.messages);
     } else {
       res.status(404).json({ message: "방을 찾을 수 없습니다." });
     }
@@ -90,7 +90,7 @@ let postMessage = async (req, res) => {
         time: new Date(),
       });
       await room.save();
-      res.status(201).json({ message: "메시지가 저장되었습니다.." });
+      res.status(200).json({ message: "메시지가 저장되었습니다.." });
     } else {
       res.status(404).json({ message: "방을 찾을 수 없습니다." });
     }

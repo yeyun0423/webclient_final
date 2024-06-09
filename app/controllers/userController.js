@@ -1,4 +1,3 @@
-//경로 app/controllers/userController.js
 const { User } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -37,7 +36,7 @@ const login = async (req, res) => {
 
     const user = await User.findOne({ email }).populate("friends");
     if (!user) {
-      return res.status(400).json({ msg: "존재하지 않는 사용자입니다." });
+      return res.status(400).json({ msg: "사용자를 찾을 수 없습니다." });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);

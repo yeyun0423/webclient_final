@@ -1,4 +1,3 @@
-//경로 app/public/javascripts/room.js
 const path = window.location.pathname;
 const pathSegments = path.split("/");
 const roomId = pathSegments[pathSegments.length - 1];

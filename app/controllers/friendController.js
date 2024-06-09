@@ -8,7 +8,7 @@ const addFriend = async (req, res) => {
     const user = await User.findOne({ email: userEmail });
     const friend = await User.findOne({ email: friendEmail });
     if (!user || !friend) {
-      return res.status(404).json({ msg: "사용자가 존재하지 않습니다." });
+      return res.status(404).json({ msg: "사용자를 찾을 수 없습니다." });
     }
 
     if (user.friends.some((friend) => friend.email === friendEmail)) {

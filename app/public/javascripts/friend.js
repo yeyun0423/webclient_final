@@ -32,7 +32,6 @@ $("#modal-friend-button")
     });
   });
 
-//친구 삭제
 $(document).ready(function () {
   $(".friends-list").on("click", ".remove-friend-icon", function () {
     var friendItem = $(this).closest(".friend-item");

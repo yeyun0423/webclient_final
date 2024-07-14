@@ -22,7 +22,7 @@
 ## 설치 및 설정
 
 1.프로젝트 클론
-파일을 생성 후, 파일의 cmd창에서 git clone <repository-url> 
+파일을 생성 후, 파일의 cmd창에서 
 git clone https://github.com/yeyun0423/webclient_final.git
 
 2.의존성 설치

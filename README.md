@@ -22,17 +22,17 @@
 ## 화면
 
 ### 로그인
-<p align="center">
+<p align="left">
   <img src="https://github.com/user-attachments/assets/67b38391-cc8e-4d93-aac9-2f890aa61fe9" alt="채팅웹 로그인" width="300"/>
 </p>
 
 ### 친구 추가
-<p align="center">
+<p align="left">
   <img src="https://github.com/user-attachments/assets/46643b24-4db3-4a6f-be62-c90ed75ca8c3" alt="채팅 친구창" width="300"/>
 </p>
 
 ### 채팅화면
-<p align="center">
+<p align="left">
   <img src="https://github.com/user-attachments/assets/b68a0cb3-e0dd-4c02-a1e6-b1312179e423" alt="채팅화면" width="300"/>
 </p>
 

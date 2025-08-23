@@ -19,21 +19,16 @@
 - **백엔드**: Node.js, Express
 - **데이터베이스**: MongoDB
 
-## 설치 및 설정
+## 화면
 
-1.프로젝트 클론
-파일을 생성 후, 파일의 cmd창에서 
-git clone https://github.com/yeyun0423/webclient_final.git
+-**로그인
+<img width="294" height="355" alt="채팅웹 로그인" src="https://github.com/user-attachments/assets/67b38391-cc8e-4d93-aac9-2f890aa61fe9" />
 
-2.의존성 설치
-파일 내부의 터미널창에서 app 파일 내로 들어와 의존성 설치 
-npm i
+-**친구 추가
+<img width="382" height="482" alt="채팅 친구창" src="https://github.com/user-attachments/assets/46643b24-4db3-4a6f-be62-c90ed75ca8c3" />
 
-3.서버 시작 
-npm run dev
-
-
-
+-**채팅화면
+<img width="392" height="477" alt="채팅화면" src="https://github.com/user-attachments/assets/b68a0cb3-e0dd-4c02-a1e6-b1312179e423" />
 
 
 
